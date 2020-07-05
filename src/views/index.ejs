@@ -1,42 +1,106 @@
-<!DOCTYPE html>
-<html lang="es">
+<%- include('partials/_header')%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Nodejs Mongodb</title>
+<nav class="navbar navbar-dark bg-dark mb-4">
+    <a href="/" class="navbar-brand">CRUD node Mongo</a>
+</nav>
 
-    <!-- bootstrap CSS-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-</head>
+<!-- <pre>
+    <%= tareaTomarInfoBD %>
+</pre> -->
 
-<body>
-    <h1>Hola mundo!</h1>
-
-    <p>
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut laudantium molestiae quas aspernatur tempora
-        blanditiis. Possimus quam, nemo ipsam exercitationem ab minus quasi eius, distinctio temporibus placeat eos
-        laudantium sapiente totam id maxime dolor, praesentium provident itaque eveniet. Repellat quibusdam quae
-        sapiente expedita a mollitia aspernatur voluptatem soluta quod veniam culpa natus voluptatum quia quos, placeat
-        porro reprehenderit in inventore numquam sint possimus doloribus labore? Voluptatem fuga beatae, explicabo
-        magnam velit, error eum doloremque blanditiis quod quos, et non quas.
-    </p>
+<div class="container">
 
 
+    <div class="row">
 
-    <!-- scripts -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"></script>
+        <!-- form -->
+        <div class="col-md-5">
 
-</body>
 
-</html>
+            <div class="card">
+
+
+                <div class="card-body">
+
+
+                    <form action="/add" method="POST">
+
+
+                        <div class="form-group">
+                            <input type="text" name="title" placeholder="Inserte Titulo" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <textarea name="description" id="" cols="80" rows="10" class="form-control"
+                                placeholder="Inserte descripcion"></textarea>
+                        </div>
+
+
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Agregar
+                        </button>
+
+                    </form>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+        <!-- table o list -->
+        <div class="col-md-7">
+
+            <table class="table-bordered table-hover">
+                <thead>
+
+                    <!-- fila -->
+                    <tr>
+                        <!-- cabeceras multiples -->
+                        <th>N°</th>
+                        <th>Title</th>
+                        <th>Descripcion</th>
+                        <th>Operaciones</th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- recorre y muestra los datos obtenidos de mongodb -->
+                    <% for(var i =0; i < tareaTomarInfoBD.length; i++) { %>
+
+                    <tr>
+                        <td>
+                            <%= i + 1%>
+                        </td>
+
+                        <td>
+                            <%=tareaTomarInfoBD[i].title %>
+                        </td>
+                        <td>
+                            <%=tareaTomarInfoBD[i].description %>
+                        </td>
+                        <td>
+                            <a href="/hecho/<%=tareaTomarInfoBD[i]._id %>"
+                                class="btn  <%=tareaTomarInfoBD[i].status ? 'btn-success' : 'btn-dark' %>">Hecho</a>
+                            <a href="/editar/<%=tareaTomarInfoBD[i]._id %>" class="btn btn-info">Editar</a>
+                            <a href="/borrar/<%=tareaTomarInfoBD[i]._id %>" class="btn btn-danger">Borrar</a>
+
+                        </td>
+                    </tr>
+
+                    <% }%>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
+
+<%- include('partials/_footer')%>

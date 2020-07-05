@@ -1,0 +1,50 @@
+<%- include('partials/_header')%>
+
+<!-- <pre>
+<%= tarea %>
+</pre> -->
+<nav class="navbar navbar-dark bg-dark mb-4">
+    <a href="/" class="navbar-brand">CRUD node Mongo</a>
+</nav>
+
+<div class="container">
+    <div class="col-md-5 offset-md-3">
+
+
+        <div class="card">
+
+
+            <div class="card-body">
+
+
+                <form action="/actualizar/<%tarea._id%>" method="POST">
+
+
+                    <div class="form-group">
+                        <input type="text" name="title" placeholder="Inserte Titulo" class="form-control"
+                            value="<%=tarea.title %>">
+                    </div>
+
+                    <div class="form-group">
+                        <textarea name="description" id="" cols="80" rows="10" class="form-control"
+                            placeholder="Inserte descripcion"><%=tarea.description%></textarea>
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary btn-block">
+                        Actualizar
+                    </button>
+
+                </form>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+</div>
+
+<%- include('partials/_footer')%>
