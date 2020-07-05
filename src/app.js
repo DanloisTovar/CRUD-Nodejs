@@ -18,9 +18,11 @@ mongoose
   .connect('mongodb://localhost/crud-mongo')
   .then((db) => console.log('Base de datos Crud-Mongo conectada!!'))
   .catch((err) => console.log(err));
+
 //Rutas:
 const indexRoutes = require('./routes/routes');
 app.use('/', indexRoutes);
+
 //Inicio de servidor:
 app.listen(app.get('port'), () => {
   console.log(`Servidor corriendo por el puerto: ${app.get('port')}!!`);
