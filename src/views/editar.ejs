@@ -8,43 +8,47 @@
 </nav>
 
 <div class="container">
-    <div class="col-md-5 offset-md-3">
+
+    <div class="row">
+        <div class="col-md-5 offset-md-3">
 
 
-        <div class="card">
+            <div class="card">
 
 
-            <div class="card-body">
+                <div class="card-body">
 
 
-                <form action="/actualizar/<%tarea._id%>" method="POST">
+                    <form action="/editar/<%tarea._id%>" method="POST">
 
 
-                    <div class="form-group">
-                        <input type="text" name="title" placeholder="Inserte Titulo" class="form-control"
-                            value="<%=tarea.title %>">
-                    </div>
+                        <div class="form-group">
+                            <input type="text" name="title" placeholder="Inserte Titulo" class="form-control"
+                                value="<%=tarea.title %>">
+                        </div>
 
-                    <div class="form-group">
-                        <textarea name="description" id="" cols="80" rows="10" class="form-control"
-                            placeholder="Inserte descripcion"><%=tarea.description%></textarea>
-                    </div>
+                        <div class="form-group">
+                            <textarea name="description" id="" cols="80" rows="10" class="form-control"
+                                placeholder="Inserte descripcion"><%=tarea.description%></textarea>
+                        </div>
 
 
-                    <button type="submit" class="btn btn-primary btn-block">
-                        Actualizar
-                    </button>
+                        <button type="submit" class="btn btn-primary btn-block">
+                            Actualizar
+                        </button>
 
-                </form>
+                    </form>
+
+
+                </div>
 
 
             </div>
 
 
         </div>
-
-
     </div>
+
 </div>
 
 <%- include('partials/_footer')%>

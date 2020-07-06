@@ -48,7 +48,7 @@ router.get('/editar/:id', async (req, res) => {
 
 // POST:
 
-router.post('/edit/:id', async (req, res) => {
+router.post('/editar/:id', async (req, res) => {
   const { id } = req.params;
   await Tarea.update({ _id: id }, req.body);
   res.redirect('/');
