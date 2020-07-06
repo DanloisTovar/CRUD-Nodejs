@@ -38,7 +38,7 @@ router.get('/hecho/:id', async (req, res) => {
 // PUTS:
 
 //GET
-router.get('/editar/:id', async (req, res) => {
+router.get('/actualizar/:id', async (req, res) => {
   const { id } = req.params;
   const tarea = await Tarea.findById(id);
   res.render('editar.ejs', {
@@ -48,7 +48,7 @@ router.get('/editar/:id', async (req, res) => {
 
 // POST:
 
-router.post('/editar/:id', async (req, res) => {
+router.post('/actualizar/:id', async (req, res) => {
   const { id } = req.params;
   await Tarea.update({ _id: id }, req.body);
   res.redirect('/');
